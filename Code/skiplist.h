@@ -14,6 +14,8 @@
  */
 typedef struct s_SkipList *SkipList;
 
+
+
 /**
  *	@brief Type of the operator that one may map on a SkipList.
  */
