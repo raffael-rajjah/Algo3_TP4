@@ -99,6 +99,13 @@ int skiplist_at(SkipList d, unsigned int i){
 	
 }
 
+void skiplist_map(SkipList d, ScanOperator f, void *user_data){
+	for (int i = 0; i < d->size; i++){
+		f(i, user_data);
+	}
+	
+}
+
 SkipList skiplist_insert(SkipList d, int value) {
 	
 	Node* newNode = malloc(sizeof(Node));
