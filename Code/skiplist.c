@@ -91,17 +91,23 @@ unsigned int skiplist_size(SkipList d){
 int skiplist_at(SkipList d, unsigned int i){
 
 	Node* currentNode = d->sentinelle->next[0];
-	for (int j = 0; j < i; j++){
-		currentNode->next[0];
+	for (int j = 0; (unsigned int) j < i; j++){
+		currentNode = currentNode->next[0];
 	}
 
-	return currentNode;
+	return currentNode->value;
 	
 }
 
 void skiplist_map(SkipList d, ScanOperator f, void *user_data){
+
+	printf("Skiplist (%d)\n", d->size);
+
+	Node* currentNode = d->sentinelle->next[0];
+
 	for (int i = 0; i < d->size; i++){
-		f(i, user_data);
+		f(currentNode->value, user_data);
+		currentNode = currentNode->next[0];
 	}
 	
 }
@@ -141,6 +147,10 @@ SkipList skiplist_insert(SkipList d, int value) {
 
 		while (currentNode != d->sentinelle){
 			
+			if(currentNode->value == value){
+				return d;
+			}
+
 			if (currentNode->value > value){
 				
 				// previous 
@@ -224,42 +234,37 @@ SkipList skiplist_insert(SkipList d, int value) {
 	newNode->next = next;
 
 
-	// printf("sentinnelle levellllss : %d\n", d->sentinelle->level);
 
-	// printf("newnode level : %d\n", newNode->level);
-	// for (int i = 0; i < d->sentinelle->level; i++){
-	// 	printf("value : %d (level : %d)\n", d->sentinelle->next[i]->value, d->sentinelle->next[i]->level);
-	// }
 	
-	printf("afficher %d: ----------------------------------------------------------------------------------\n", d->size);
-	Node* it = d->sentinelle->next[0];
-	while (it != d->sentinelle){
-		printf("val : %d level : %d\n", it->value, it->level);
-		for (int i = 0; i < it->level; i++){
-			printf("  - next[%d] : %d\n", i, it->next[i]->value);
+	// printf("afficher %d: ----------------------------------------------------------------------------------\n", d->size);
+	// Node* it = d->sentinelle->next[0];
+	// while (it != d->sentinelle){
+	// 	printf("val : %d level : %d\n", it->value, it->level);
+	// 	for (int i = 0; i < it->level; i++){
+	// 		printf("  - next[%d] : %d\n", i, it->next[i]->value);
 
-		}
+	// 	}
 
-		for (int i = 0; i < it->level; i++){
-			printf("  * previous[%d] : %d\n", i, it->previous[i]->value);
-		}
+	// 	for (int i = 0; i < it->level; i++){
+	// 		printf("  * previous[%d] : %d\n", i, it->previous[i]->value);
+	// 	}
 
-		printf("\n");
+	// 	printf("\n");
 		
 
 		
-		it = it->next[0];
-	}
-		it = d->sentinelle;
-		printf("SENTINELLE level : %d\n", it->level);
-		for (int i = 0; i < it->level; i++){
-			printf("  - next[%d] : %d\n", i, it->next[i]->value);
+	// 	it = it->next[0];
+	// }
+	// 	it = d->sentinelle;
+	// 	printf("SENTINELLE level : %d\n", it->level);
+	// 	for (int i = 0; i < it->level; i++){
+	// 		printf("  - next[%d] : %d\n", i, it->next[i]->value);
 
-		}
+	// 	}
 
-		for (int i = 0; i < it->level; i++){
-			printf("  * previous[%d] : %d\n", i, it->previous[i]->value);
-		}
+	// 	for (int i = 0; i < it->level; i++){
+	// 		printf("  * previous[%d] : %d\n", i, it->previous[i]->value);
+	// 	}
 	
 
 	return d;

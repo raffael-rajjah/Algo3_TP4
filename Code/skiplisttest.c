@@ -88,19 +88,33 @@ SkipList buildlist(int num) {
 
 /*----------------------------------------------------------------------------------------------*/
 
+void printList(int i, void* user_data){
+	(void) user_data;
+
+	printf("%d ", i);
+
+}
+
 /** Exercice 1.
  	Programming and test of skiplist construction.
  */
 void test_construction(int num){
-	SkipList a = skiplist_create(5);
+	
+	SkipList d = buildlist(num);
+
+	skiplist_map(d, printList, 0);
+
+	
+
+	// SkipList a = skiplist_create(5);
 
 
-	skiplist_insert(a,1);
-	skiplist_insert(a,2);
-	skiplist_insert(a, 5);
-	skiplist_insert(a, 4);
-	skiplist_insert(a, 3);
-	skiplist_insert(a, 6);
+	// skiplist_insert(a,1);
+	// skiplist_insert(a,2);
+	// skiplist_insert(a, 5);
+	// skiplist_insert(a, 4);
+	// skiplist_insert(a, 3);
+	// skiplist_insert(a, 6);
 
 	// skiplist_delete(a);
 
@@ -109,7 +123,7 @@ void test_construction(int num){
 
 	// skiplist_insert(b,3);
 
-	(void)num;
+	// (void)num;
 }
 
 /** Exercice 2.
