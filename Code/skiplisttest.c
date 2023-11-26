@@ -102,6 +102,9 @@ void test_construction(int num){
 	skiplist_insert(a, 3);
 	skiplist_insert(a, 6);
 
+	// skiplist_delete(a);
+
+
 	// SkipList b = skiplist_create(3);
 
 	// skiplist_insert(b,3);
