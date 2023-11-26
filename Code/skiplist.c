@@ -84,6 +84,21 @@ void skiplist_delete(SkipList d) {
 
 }
 
+unsigned int skiplist_size(SkipList d){
+	return d->size;
+}
+
+int skiplist_at(SkipList d, unsigned int i){
+
+	Node* currentNode = d->sentinelle->next[0];
+	for (int j = 0; j < i; j++){
+		currentNode->next[0];
+	}
+
+	return currentNode;
+	
+}
+
 SkipList skiplist_insert(SkipList d, int value) {
 	
 	Node* newNode = malloc(sizeof(Node));
