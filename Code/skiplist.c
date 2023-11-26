@@ -59,7 +59,29 @@ SkipList skiplist_create(int nblevels) {
 }
 
 void skiplist_delete(SkipList d) {
-	(void)d;
+	Node* currentNode = d ->sentinelle->next[0]->next[0];
+
+	for(int i = 0; i < d->size; i++){
+		
+		free(currentNode->previous[0]->next);
+		free(currentNode->previous[0]->previous);
+		currentNode->previous[0]->next = NULL;
+		currentNode->previous[0]->previous = NULL;
+		free(currentNode->previous[0]);
+
+		currentNode = currentNode->next[0];
+
+
+	}
+
+
+	free(d->sentinelle->next);
+	free(d->sentinelle->previous);
+	d->sentinelle->next = NULL;
+	d->sentinelle->previous = NULL;
+	free(d->sentinelle);
+
+
 }
 
 SkipList skiplist_insert(SkipList d, int value) {
