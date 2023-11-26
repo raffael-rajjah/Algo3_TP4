@@ -92,10 +92,21 @@ SkipList buildlist(int num) {
  	Programming and test of skiplist construction.
  */
 void test_construction(int num){
-	SkipList a = skiplist_create(10);
+	SkipList a = skiplist_create(5);
+
 
 	skiplist_insert(a,1);
-	(void) num;
+	skiplist_insert(a,2);
+	skiplist_insert(a, 5);
+	skiplist_insert(a, 4);
+	skiplist_insert(a, 3);
+	skiplist_insert(a, 6);
+
+	// SkipList b = skiplist_create(3);
+
+	// skiplist_insert(b,3);
+
+	(void)num;
 }
 
 /** Exercice 2.

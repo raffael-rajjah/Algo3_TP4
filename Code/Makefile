@@ -6,7 +6,7 @@ ifeq ($(DEBUG),yes)
 	CFLAGS += -g
 	LDFLAGS +=
 else
-	CFLAGS += -O3 -DNDEBUG
+	CFLAGS += -DNDEBUG
 	LDFLAGS +=
 endif
 
